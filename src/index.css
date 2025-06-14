@@ -1,1 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 @import "tailwindcss";
+
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 900;
+}
+
+body{
+    background-image: url("assets/fondo.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
