@@ -15,13 +15,21 @@ const [formInput, setFormInput] = useState({
     passwordConfirm: '',
     email: ''
 });
+
+
 const [successMSG, setSuccessMSG] = useState('');
 
-//"Metodo de validacion"
+//"Metodo de validacion" y muestra de errores
 
 const validateForm = () => {
 
-    const errors = { ...FormErrors };
+    const errors = {
+        username: '',
+        password: '',
+        passwordConfirm: '',
+        email: ''
+    };
+
     let isValid = true;
     if (!formInput.username) {
         errors.username = 'El nombre de usuario es requerido';
@@ -38,6 +46,13 @@ const validateForm = () => {
     if (!formInput.email) {
         errors.email = 'El correo electrónico es requerido';
         isValid = false;
+    } else {
+        // Simple email regex for validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formInput.email)) {
+            errors.email = 'El correo electrónico no es válido';
+            isValid = false;
+        }
     }
     if (formInput.password !== formInput.passwordConfirm) {
         errors.passwordConfirm = 'Las contraseñas no coinciden';
@@ -49,23 +64,41 @@ const validateForm = () => {
 
 //Validar campos
 
-const handleRegister = () => {
-    if (validateForm()) {
-        setSuccessMSG('¡Registro exitoso!');
-        console.log('Usuario registrado:', formInput);
-    } else {
-        setSuccessMSG('');
+const handleRegister = async () => {
+    try{
+        if (validateForm()) {
+
+            const response = await fetch("https://e-commerce-back-wtnc.onrender.com/api/registrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                
+                credentials:"include",
+
+                body: JSON.stringify({
+                    nombre: formInput.username,
+                    correo: formInput.email,
+                    contraseña: formInput.password
+                })
+            });
+
+            const data = await response.json();
+            console.log(data);
+
+            } else {
+            setSuccessMSG('');
+        }
+    }
+    catch{
+        console.log("ERROR.")
     }
 }
 
  return (
-    <div className='w-[80%] h-[80%] bg-white max-[750px]:flex-col rounded-lg shadow-lg flex flex-row items-center justify-center p-4  mt-10'>
+    <div className='py-15 w-[40%] h-[80%] bg-white max-[750px]:flex-col rounded-lg shadow-lg flex flex-row items-center justify-center p-4  mt-10'>
  
-        <div className='w-[50%] max-[750px]:w-[100%] m-5 h-full flex items-center justify-center flex-col bg-linear-to-t from-yellow-400 to-yellow-200 rounded-lg'>
-            <h2 className='text-4xl p-[40%] font-bold text-yellow-600 mb-4'>Bienvenido...</h2>
-        </div>
-
-        <div className='w-[50%] max-[750px]:w-[100%] h-full flex items-center justify-center'>
+        <div className='w-[100%] h-full flex items-center justify-center'>
             <form onSubmit={validateForm} className='w-full max-w-sm'>
                 <div className='mb-4'>
 
@@ -115,6 +148,9 @@ const handleRegister = () => {
                 <div className='flex items-center justify-between'>
                     <button onClick={handleRegister} className='submit bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' type='button'>
                         Register
+                    </button>
+                    <button className='submit bg-gray-300 hover:bg-gray-500 text-gray-700  hover:text-gray-300 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'>
+                        Iniciar con Google 
                     </button>
                 </div>
             </form>
