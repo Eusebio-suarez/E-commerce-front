@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { useState} from "react"
 
 export const InicioSesion = () => {
@@ -36,6 +36,8 @@ export const InicioSesion = () => {
         return isValid
     };
 
+    const Navigate = useNavigate()
+
     //Validar Campos
     const handlerLogin = async () => {
 
@@ -54,6 +56,11 @@ export const InicioSesion = () => {
                 contraseña: FormInput.contraseña
                 }),
             });
+            console.log(response)
+
+            if (response.status === 200){
+                Navigate("/")
+            }
 
             const data = await response.json()
             console.log(data.mensaje)
@@ -70,7 +77,7 @@ export const InicioSesion = () => {
 
     return (
         <div className= "w-[390px] h-[430px] mt-11 ml-[63%] pt-9 backdrop-blur-sm border-2 border-gray-400 flex flex-col gap-5 p-7 rounded-2xl relative ">
-            <h2 className="text-center text-[25px] text-white">Iniciar Sesión</h2>
+            <h3 className="text-center text-[25px] text-white">Iniciar Sesión</h3>
             <form onSubmit={validateForm} action="#" className="flex flex-col justify-center items-center gap-4 pt-4">
                 <input onChange={(e)=> setFormInput({...FormInput, email: e.target.value})} value={FormInput.email} type="email" className="bg-gray-300 w-[180px] h-[30px] pl-2 rounded-[5px] outline-none" placeholder="Email"/>
                 <p className='text-red-700 text-[12px] font-semibold italic'>{FormErrors.email}</p>
