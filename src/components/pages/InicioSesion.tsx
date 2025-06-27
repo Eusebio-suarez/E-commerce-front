@@ -69,7 +69,8 @@ export const InicioSesion = () => {
 
 
     return (
-        <div className= "w-[390px] h-[430px] mt-11 ml-[63%] pt-9 backdrop-blur-sm border-2 border-gray-400 flex flex-col gap-5 p-7 rounded-2xl relative ">
+        <div className="w-full flex content-center items-center justify-center">
+        <div className= "w-[390px] h-[430px] mt-11  pt-9 backdrop-blur-xm bg-gray-500/60 border-2 border-gray-400 flex flex-col gap-5 p-7 rounded-2xl  ">
             <h2 className="text-center text-[25px] text-white">Iniciar Sesión</h2>
             <form onSubmit={validateForm} action="#" className="flex flex-col justify-center items-center gap-4 pt-4">
                 <input onChange={(e)=> setFormInput({...FormInput, email: e.target.value})} value={FormInput.email} type="email" className="bg-gray-300 w-[180px] h-[30px] pl-2 rounded-[5px] outline-none" placeholder="Email"/>
@@ -82,9 +83,10 @@ export const InicioSesion = () => {
                     <p className="text-green-600 text-sm font-semibold mb-2">{successMSG}</p>
                 )}
                 <button onClick={handlerLogin} className="bg-yellow-400 w-[180px] h-[30px] rounded-[13px] text- hover:bg-yellow-600 hover:scale-95">Iniciar Sesión</button>
-                <p className="text-white">¿No tienes cuenta?</p> 
-                <NavLink to="/Registrarse" className="font-bold text-white no-underline hover:underline decoration-2">Registrarse</NavLink>
+                <p className="text-yellow-200 font-semibold">¿No tienes cuenta?</p> 
+                <NavLink to="/Registrarse" className="font-bold text-yellow-200 no-underline hover:underline decoration-2">Registrarse</NavLink>
             </form>
+        </div>
         </div>
     )
 }
