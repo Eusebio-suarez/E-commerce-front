@@ -13,3 +13,12 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.scroll {
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ebebeb transparent;
+
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: thin; /* Firefox */
+}
