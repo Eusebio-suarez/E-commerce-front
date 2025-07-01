@@ -5,6 +5,7 @@ import { Libros } from "./components/pages/Libros";
 import { Recetas } from "./components/pages/Recetas";
 import { Carrito } from "./components/pages/Carrito";
 import { InicioSesion } from "./components/pages/InicioSesion";
+import { Footer } from "./components/layouts/Footer";
 import { Registrarse } from "./components/pages/Registrarse";
 
 export const App = () => {
@@ -20,6 +21,7 @@ export const App = () => {
       <Route path="/InicioSesion" element={<InicioSesion/>}/>
       <Route path="/Registrarse" element={<Registrarse/>}/>
     </Routes>
+    <Footer></Footer>
     </BrowserRouter>
     </>
   )
