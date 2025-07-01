@@ -37,8 +37,8 @@ export const Inicio = () => {
                 </div>
             </div>
 
-    
-            <div className="bg-[#ffe5d2] py-6">
+
+            <div className="bg-red-200 py-6">
                 <div className="flex justify-center">
                 <h3 className="text-2xl font-semibold">Libros Recomendados</h3>
                 </div>
@@ -79,7 +79,7 @@ export const Inicio = () => {
                     />
                     <Card
                         titulo="Bon Appetit Magazine August 2020 Simple Summer Recipes"
-                        pClass="pt-3 pb-4" 
+                        pClass="pt-3.5 pb-4" 
                         precio="$23.00.00"
                         img = {<img src={libro7} className="w-74 h-[290px] rounded-t-[10px] object-cover" alt="Libro1"/>}
                     />
@@ -88,7 +88,6 @@ export const Inicio = () => {
                         precio="$50.000.00"
                         img={<img src={libro8} className="w-74 h-[290px] rounded-t-[10px] object-cover" alt="Libro1"/>}
                     />
-                    
                 </Slider>
                 </div>
             </div>

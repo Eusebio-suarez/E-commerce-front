@@ -2,7 +2,12 @@ import { NavLink, useNavigate } from "react-router-dom"
 import { useState} from "react"
 import imgSesion from '../../assets/receta.jpg'
 
-export const InicioSesion = () => {
+type InicioSesionProps ={
+    isLoggedIn: boolean;
+    setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export const InicioSesion = ({ isLoggedIn ,setIsLoggedIn } : InicioSesionProps) => {
     //Definición de las variables de  Error e Inputs:
 
     //1. Guarda los valores ingresados en el formulario (Se actualiza con onChange)
@@ -22,6 +27,7 @@ export const InicioSesion = () => {
     // 3.Guarda un mensaje si la validación falla, o algún mensaje exitoso
     const [successMSG, setSuccessMSG] = useState('');
 
+    
 
     // Método de validación y muestra de errores.
     const validateForm = () => {
@@ -46,7 +52,6 @@ export const InicioSesion = () => {
     const Navigate = useNavigate()
 
 
-
     //Validar Campos
     const handlerLogin = async () => {
         try{
@@ -65,6 +70,7 @@ export const InicioSesion = () => {
             console.log(response)
 
             if (response.status === 200){
+                setIsLoggedIn(true)
                 Navigate("/")
             }
 
@@ -88,31 +94,40 @@ export const InicioSesion = () => {
                 <img src={imgSesion} alt="" className="w-[100vw] h-[calc(100vh-114px)] object-cover"/>
             </div>
 
-            <div className= "absolute w-[390px] h-[430px] flex flex-col justify-center align-middle backdrop-blur-sm gap-4 rounded-2xl shadow-2xl shadow-black">
-                <h3 className="text-center text-[28px] font-bold text-white">Iniciar Sesión</h3>
-                <form onSubmit={validateForm} action="#" className="flex flex-col justify-center items-center gap-4 pt-4">
-                    
-                    <input onChange={(e)=> setFormInput({...FormInput, email: e.target.value})} value={FormInput.email} type="email" className="bg-gray-300 w-[240px] h-[30px] pl-2 rounded-[5px] outline-none" placeholder="Email"/>
-                    <p className='text-red-700 text-[12px] font-semibold italic'>{FormErrors.email}</p>
+                
+                {!isLoggedIn ? (
+                    <>
+                    <div className= "absolute w-[390px] h-[430px] flex flex-col justify-center align-middle backdrop-blur-sm gap-4 rounded-2xl shadow-2xl shadow-black">
+                        <h3 className="text-center text-[28px] font-bold text-white">Iniciar Sesión</h3>
+                        <form onSubmit={validateForm} action="#" className="flex flex-col justify-center items-center gap-4 pt-4">
+                            
+                            <input onChange={(e)=> setFormInput({...FormInput, email: e.target.value})} value={FormInput.email} type="email" className="bg-gray-300 w-[240px] h-[30px] pl-2 rounded-[5px] outline-none" placeholder="Email"/>
+                            <p className='text-red-700 text-[12px] font-semibold italic'>{FormErrors.email}</p>
 
-                    <input onChange={(e)=> setFormInput({...FormInput, contraseña: e.target.value})} value={FormInput.contraseña} type="password" className="bg-gray-300 w-[240px] h-[30px] pl-2 rounded-[5px] outline-none" placeholder="Contraseña"/>
-                    <p className='text-red-700 text-[12px] font-semibold italic'>{FormErrors.contraseña}</p> 
+                            <input onChange={(e)=> setFormInput({...FormInput, contraseña: e.target.value})} value={FormInput.contraseña} type="password" className="bg-gray-300 w-[240px] h-[30px] pl-2 rounded-[5px] outline-none" placeholder="Contraseña"/>
+                            <p className='text-red-700 text-[12px] font-semibold italic'>{FormErrors.contraseña}</p> 
 
-                    {successMSG && (
-                        <p className="text-green-600 text-sm font-semibold mb-2">{successMSG}</p>
-                    )}
-                    
-                    <button onClick={handlerLogin} className="bg-[#df5454] w-[240px] h-[30px] rounded-[8px] text-white hover:bg-[#c74b4b]">Iniciar Sesión</button>
+                            {successMSG && (
+                                <p className="text-green-600 text-sm font-semibold mb-2">{successMSG}</p>
+                            )}
+                            
+                            <button onClick={handlerLogin} className="bg-[#df5454] w-[240px] h-[30px] rounded-[8px] text-white hover:bg-[#c74b4b]">Iniciar Sesión</button>
 
-                    <div className="flex justify-center gap-12 pt-12">
-                        <p className="text-white">¿No tienes cuenta?</p> 
-                        <NavLink to="/Registrarse" className="font-bold text-white no-underline hover:underline decoration-2">
-                        <button className="bg-yellow-500 w-[120px] h-[30px] rounded-[8px] text-white hover:bg-yellow-600">Registrarse</button>
-                        </NavLink>
+                            <div className="flex justify-center gap-12 pt-12">
+                                <p className="text-white">¿No tienes cuenta?</p> 
+                                <NavLink to="/Registrarse" className="font-bold text-white no-underline hover:underline decoration-2">
+                                <button className="bg-yellow-500 w-[120px] h-[30px] rounded-[8px] text-white hover:bg-yellow-600">Registrarse</button>
+                                </NavLink>
+                            </div>
+                        </form>
                     </div>
-                </form>
-            </div>
+                    </>
+                ) : (
+                    <div>
+                        <h3 className="text-center text-[28px] font-bold text-white">¿Estas seguro que quieres cerrar sesión?</h3>
+                        <button className="bg-red-700 rounded-[10px] w-44 h-9 text-white font-semibold">Salir de la cuenta</button>
+                    </div>
+                )}
         </div>
-
     )
 }
