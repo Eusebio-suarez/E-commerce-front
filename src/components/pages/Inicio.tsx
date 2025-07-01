@@ -19,7 +19,7 @@ export const Inicio = () => {
     speed: 900,
     slidesToShow: 4,
     slidesToScroll: 3,
-    
+    autoplay: true,
     };
 
     return (
@@ -38,12 +38,12 @@ export const Inicio = () => {
             </div>
 
     
-            <div className="bg-[#ffe5d2] py-12">
+            <div className="bg-[#ffe5d2] py-6">
                 <div className="flex justify-center">
                 <h3 className="text-2xl font-semibold">Libros Recomendados</h3>
                 </div>
 
-                <div className="flex flex-col px-11 overflow-hidden">
+                <div className="flex flex-col px-14 py-[18px] overflow-hidden">
                     <Slider {...settings}>
                     <Card></Card>
                     <Card

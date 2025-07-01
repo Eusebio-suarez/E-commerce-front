@@ -10,7 +10,7 @@ export const Footer = () => {
                 </div>
                 <div className="flex flex-col">      
                     <h3 className="font-bold mb-1 text-[20px]">Enlaces Rápidos</h3>
-                    <NavLink className="hover:text-[#df5454]" to="/Libros">Inicio</NavLink>
+                    <NavLink className="hover:text-[#df5454]" to="/">Inicio</NavLink>
                     <NavLink className="hover:text-[#df5454]" to="/Libros">Libros</NavLink>
                     <NavLink className="hover:text-[#df5454]" to="/Recetas">Recetas</NavLink>
                     <NavLink className="hover:text-[#df5454]" to="/Carrito">Carrito</NavLink>
