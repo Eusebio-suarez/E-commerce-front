@@ -82,6 +82,7 @@ export const InicioSesion = () => {
 
 
     return (
+
         <div className="pt-28 flex justify-center items-center">
             <div className="relative">
                 <img src={imgSesion} alt="" className="w-[100vw] h-[calc(100vh-114px)] object-cover"/>
@@ -113,6 +114,5 @@ export const InicioSesion = () => {
             </div>
         </div>
 
-        
     )
 }
