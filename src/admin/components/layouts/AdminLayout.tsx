@@ -1,14 +1,16 @@
 // src/admin/AdminLayout.tsx
 import { Outlet } from "react-router-dom"
-import { NavbarAdmin } from "./NavbarAdmin"
+import { HeaderAdmin } from "./HeaderAdmin"
 
 export const AdminLayout = () => {
   return (
     <>
-      <NavbarAdmin />
-      <main className="p-4">
-        <Outlet /> 
-      </main>
+      <div className="w-full h-screen bg-[#f4f5f7]">
+        <HeaderAdmin />
+        <main className="p-4">
+          <Outlet /> 
+        </main>
+      </div>
     </>
   )
 }
