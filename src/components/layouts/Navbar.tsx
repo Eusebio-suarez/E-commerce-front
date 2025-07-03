@@ -1,11 +1,7 @@
 import { NavLink } from "react-router-dom"
 
-type NavbarProps = {
-    isLoggedIn: boolean;
-    setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
-}
 
-export const Navbar = ({ isLoggedIn, setIsLoggedIn } : NavbarProps) => {
+export const Navbar = () => {
     return (
 
         <div className="flex justify-end px-20 py-8">
