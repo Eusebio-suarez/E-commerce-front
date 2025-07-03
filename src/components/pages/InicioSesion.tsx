@@ -2,12 +2,8 @@ import { NavLink, useNavigate } from "react-router-dom"
 import { useState} from "react"
 import imgSesion from '../../assets/receta.jpg'
 
-type InicioSesionProps ={
-    isLoggedIn: boolean;
-    setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
-}
 
-export const InicioSesion = ({ isLoggedIn ,setIsLoggedIn } : InicioSesionProps) => {
+export const InicioSesion = () => {
     //Definición de las variables de  Error e Inputs:
 
     //1. Guarda los valores ingresados en el formulario (Se actualiza con onChange)
