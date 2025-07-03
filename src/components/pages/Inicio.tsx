@@ -20,10 +20,26 @@ export const Inicio = () => {
     slidesToShow: 4,
     slidesToScroll: 3,
     autoplay: true,
-    };
+    responsive: [
+        {
+            breakpoint: 700,
+            settings:{
+                slidesToShow: 1,
+                slidesToScroll: 1,
+            },
+        },
+        {
+            breakpoint: 1180,
+            settings:{
+                slidesToShow: 2,
+                slidesToScroll: 2,
+            }
+        }
+    ]
+    }
 
     return (
-        <div>
+        <div className="">
             <div className="pt-28 flex justify-items-start items-center">
                 <div className="relative">
                     <img src={fondo} alt="imagen de inicio" className="w-[100vw] h-[calc(100vh-134px)] object-cover"/>
@@ -36,7 +52,6 @@ export const Inicio = () => {
                     </NavLink>
                 </div>
             </div>
-
 
             <div className="bg-red-200 py-6">
                 <div className="flex justify-center">

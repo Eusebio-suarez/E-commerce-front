@@ -92,9 +92,7 @@ export const InicioSesion = ({ isLoggedIn ,setIsLoggedIn } : InicioSesionProps) 
         <div className="pt-28 flex justify-center items-center">
             <div className="relative">
                 <img src={imgSesion} alt="" className="w-[100vw] h-[calc(100vh-114px)] object-cover"/>
-            </div>
-
-                
+            </div>                
                 {!isLoggedIn ? (
                     <>
                     <div className= "absolute w-[390px] h-[430px] flex flex-col justify-center align-middle backdrop-blur-sm gap-4 rounded-2xl shadow-2xl shadow-black">
@@ -102,10 +100,10 @@ export const InicioSesion = ({ isLoggedIn ,setIsLoggedIn } : InicioSesionProps) 
                         <form onSubmit={validateForm} action="#" className="flex flex-col justify-center items-center gap-4 pt-4">
                             
                             <input onChange={(e)=> setFormInput({...FormInput, email: e.target.value})} value={FormInput.email} type="email" className="bg-gray-300 w-[240px] h-[30px] pl-2 rounded-[5px] outline-none" placeholder="Email"/>
-                            <p className='text-red-700 text-[12px] font-semibold italic'>{FormErrors.email}</p>
+                            <p className='text-red-700 text-xs font-semibold italic'>{FormErrors.email}</p>
 
                             <input onChange={(e)=> setFormInput({...FormInput, contraseña: e.target.value})} value={FormInput.contraseña} type="password" className="bg-gray-300 w-[240px] h-[30px] pl-2 rounded-[5px] outline-none" placeholder="Contraseña"/>
-                            <p className='text-red-700 text-[12px] font-semibold italic'>{FormErrors.contraseña}</p> 
+                            <p className='text-red-700 text-xs font-semibold italic'>{FormErrors.contraseña}</p> 
 
                             {successMSG && (
                                 <p className="text-green-600 text-sm font-semibold mb-2">{successMSG}</p>

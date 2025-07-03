@@ -9,7 +9,7 @@ export const Navbar = ({ isLoggedIn, setIsLoggedIn } : NavbarProps) => {
     return (
 
         <div className="flex justify-end px-20 py-8">
-            <div className="text-[rgb(0,0,0)] font-[450] text-[18px]">
+            <div className="font-[450] text-[18px]">
             <ul className="gap-9 flex justify-center items-center text-start">
 
                 <li className="hover:scale-116 transition duration-200 text flex flex-col items-center">

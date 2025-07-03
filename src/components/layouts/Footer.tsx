@@ -2,11 +2,11 @@ import { NavLink } from "react-router-dom"
 
 export const Footer = () => {
     return (
-        <div className="bg-[#e4ded5] w-full h-[230px] ">
-            <div className="flex justify-center-safe gap-32 pt-7 pb-3.5 text-[18px] mx-auto border-b-2 w-[90%] border-[#bbb]">
+        <div className="bg-[#fff27a] w-full h-[230px] ">
+            <div className="flex justify-center-safe gap-32 pt-7 pb-3.5 text-[18px] mx-auto border-b-2 w-[90%] border-[#f0cf2c]">
                 <div className=" flex flex-col">
-                    <h3 className="font-bold text-[20px]">Inesita</h3>
-                    <p>Tu destino culinario favorito</p>
+                    <h3 className="font-bold text-[20px] text">Inesita</h3>
+                    <p className="font-serif">Tu destino culinario favorito</p>
                 </div>
                 <div className="flex flex-col">      
                     <h3 className="font-bold mb-1 text-[20px]">Enlaces Rápidos</h3>

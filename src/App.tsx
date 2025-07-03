@@ -7,6 +7,7 @@ import { Carrito } from "./components/pages/Carrito";
 import { InicioSesion } from "./components/pages/InicioSesion";
 import { Footer } from "./components/layouts/Footer";
 import { useState } from "react";
+import { Registrarse } from "./components/pages/Registrarse";
 
 
 export const App = () => {
@@ -22,6 +23,7 @@ export const App = () => {
       <Route path="/Recetas" element={<Recetas/>}/>
       <Route path="/Carrito" element={<Carrito/>}/>
       <Route path="/InicioSesion" element={<InicioSesion isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}/>
+      <Route path="/Registrarse" element={<Registrarse/>}/>
     </Routes>
     <Footer></Footer>
     </BrowserRouter>
