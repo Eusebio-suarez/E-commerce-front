@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom"
 
 export const Footer = () => {
     return (
-        <div className="bg-[#e4ded5] w-full h-[230px] ">
+        <div className="bg-[#e4ded5] w-full h-[230px] max-[500px]:w-">
             <div className="flex justify-center-safe gap-32 pt-7 pb-3.5 text-[18px] mx-auto border-b-2 w-[90%] border-[#bbb]">
                 <div className=" flex flex-col">
                     <h3 className="font-bold text-[20px]">Inesita</h3>

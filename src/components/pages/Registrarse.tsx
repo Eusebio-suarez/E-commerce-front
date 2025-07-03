@@ -65,18 +65,15 @@ const validateForm = () => {
 
 //Validar campos
 
-const handleRegister = async () => {
-    try{
+const handleRegisterClick = async () => {
+    try {
         if (validateForm()) {
-
             const response = await fetch("https://e-commerce-back-wtnc.onrender.com/api/registrar", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                
-                credentials:"include",
-
+                credentials: "include",
                 body: JSON.stringify({
                     nombre: formInput.username,
                     correo: formInput.email,
@@ -85,14 +82,19 @@ const handleRegister = async () => {
             });
 
             const data = await response.json();
-            console.log(data);
-
+            if (response.ok) {
+                alert("Usuario registrado exitosamente.");
+                window.location.href = "/InicioSesion";
             } else {
+                alert(data?.message || "Error al registrar usuario.");
+                setSuccessMSG('');
+            }
+        } else {
             setSuccessMSG('');
         }
-    }
-    catch{
-        console.log("ERROR.")
+    } catch {
+        alert("Ocurrió un error al registrar el usuario.");
+        setSuccessMSG('');
     }
 }
 
@@ -147,9 +149,11 @@ const handleRegister = async () => {
                     <p className="text-green-600 text-sm font-semibold mb-2">{successMSG}</p>
                 )}
                 <div className='flex items-center justify-between'>
-                    <button onClick={handleRegister} className='submit bg-yellow-400 w-[180px] h-[50px] rounded-[13px] text- hover:bg-yellow-600 hover:scale-95 font-bold py-2 px-4  focus:outline-none focus:shadow-outline' type='button'>
-                        Register
-                    </button>
+                    
+                        <button onClick={handleRegisterClick} className='submit bg-yellow-400 w-[180px] h-[50px] rounded-[13px] text- hover:bg-yellow-600 hover:scale-95 font-bold py-2 px-4  focus:outline-none focus:shadow-outline' type='button'>
+                            Register
+                        </button>
+                        
                     <button className='submit bg-gray-100 hover:bg-gray-500 text-gray-700  hover:text-gray-300 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'>
                         Iniciar con Google 
                     </button>
