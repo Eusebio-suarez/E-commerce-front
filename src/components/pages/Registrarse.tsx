@@ -1,5 +1,7 @@
 import {useState} from 'react';
 import { NavLink } from 'react-router-dom';
+import imgRegistro from '../../assets/receta.jpg'
+
 export const Registrarse = () => {
 
 //Definicion de las variables de Error e Inputs
@@ -99,70 +101,67 @@ const handleRegisterClick = async () => {
 }
 
  return (
-    <div className='w-full flex content-center items-center justify-center'>
-    <div className='py-15 w-[40%] h-[80%] max-[750px]:flex-col rounded-lg backdrop-blur-xm bg-gray-500/60 border-2 border-gray-400 shadow-lg flex flex-row items-center content-center justify-center p-4  mt-10'>
-        <div className='w-[100%] h-full flex items-center justify-center'>
-            <form onSubmit={validateForm} className='w-full max-w-sm'>
-                <div className='mb-4'>
 
-                    <label className='block text-gray-100 text-lg font-bold mb-2' htmlFor='username'>
-                        Registrate
-                    </label>
-                    <label className='block text-gray-100 text-sm font-bold mb-2' htmlFor='username'>
-                        Nombre
-                    </label>
-                    <input value={formInput.username} onChange={(e) => setFormInput({...formInput, username: e.target.value})} className='bg-gray-300 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' id='username' type='text' placeholder='Username' />
-                    <p className='text-red-500 text-xs italic'>{FormErrors.username}</p>
-                </div>
+    <div className='w-full flex content-center items-center justify-center pt-24'>
+        <div className="relative">
+            <img src={imgRegistro} alt="" className="w-[100vw] h-[100vh] object-cover"/>
+        </div>
+        <div className='absolute py-15 w-[390px] h-[80%] max-[750px]:flex-col backdrop-blur-xm backdrop-blur-sm gap-4 rounded-2xl shadow-2xl shadow-black flex flex-row items-center content-center justify-center p-4  mt-10'>
+            <div className='w-[100%] h-full flex items-center justify-center'>
+                <form onSubmit={validateForm} className='w-full max-w-sm flex flex-col items-center'>
+                    <div className='mb-4'>
+                        <h3 className='text-center text-[28px] font-bold text-white'>Registrate</h3>
+                        <label className='block text-gray-100 text-sm font-bold mb-2 pt-5' htmlFor='username'>
+                            Nombre
+                        </label>
+                        <input value={formInput.username} onChange={(e) => setFormInput({...formInput, username: e.target.value})} className='bg-gray-300 w-[240px] h-[30px] pl-2 rounded-[5px] outline-none' id='username' type='text' placeholder='Username' />
+                        <p className='text-red-500 text-xs italic'>{FormErrors.username}</p>
+                    </div>
 
-                <div className='mb-4'>
+                    <div className='mb-4'>
+                        <label className='block text-gray-100 text-sm font-bold mb-2' htmlFor='password'>
+                            Contraseña
+                        </label>
+                        <input value={formInput.password} onChange={(e) => setFormInput({...formInput, password: e.target.value})} className='bg-gray-300 w-[240px] h-[30px] pl-2 rounded-[5px] outline-none' id='password' type='password' placeholder='******************' />
+                        <p className='text-red-500 text-xs italic'>{FormErrors.password}</p> 
+                    </div>
 
-                    <label className='block text-gray-100 text-sm font-bold mb-2' htmlFor='password'>
-                        Contraseña
-                    </label>
-                    <input value={formInput.password} onChange={(e) => setFormInput({...formInput, password: e.target.value})} className=' bg-gray-300 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline' id='password' type='password' placeholder='******************' />
-                    <p className='text-red-500 text-xs italic'>{FormErrors.password}</p> 
+                    <div className='mb-4'>
+                        <label className='block text-gray-100 text-sm font-bold mb-2' htmlFor='passwordconfirm'>
+                            Confirmar contraseña
+                        </label>
+                        <input value={formInput.passwordConfirm} onChange={(e) => setFormInput({...formInput, passwordConfirm: e.target.value})} className='bg-gray-300 w-[240px] h-[30px] pl-2 rounded-[5px] outline-none' id='passwordconfirm' type='password' placeholder='******************' />
+                        <p className='text-red-500 text-xs italic'>{FormErrors.passwordConfirm}</p>
+                        
+                    </div>
 
-                </div>
+                    <div className='mb-6'>
+                        <label className='block text-gray-100 text-sm font-bold mb-2' htmlFor='email'>
+                            Correo Electrónico
+                        </label>
+                        <input value={formInput.email} onChange={(e) => setFormInput({...formInput, email: e.target.value})} className='bg-gray-300 w-[240px] h-[30px] pl-2 rounded-[5px] outline-none' id='email' type='email' placeholder='Correo@ejemplo.com' />
+                        <p className='text-red-500 text-xs italic'>{FormErrors.email}</p>
+                    </div>
 
-                <div className='mb-4'>
+                    {successMSG && (
+                        <p className="text-green-600 text-sm font-semibold mb-2">{successMSG}</p>
+                    )}
 
-                    <label className='block text-gray-100 text-sm font-bold mb-2' htmlFor='passwordconfirm'>
-                        Confirmar contraseña
-                    </label>
-                    <input value={formInput.passwordConfirm} onChange={(e) => setFormInput({...formInput, passwordConfirm: e.target.value})} className='bg-gray-300 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline' id='passwordconfirm' type='password' placeholder='******************' />
-                    <p className='text-red-500 text-xs italic'>{FormErrors.passwordConfirm}</p>
-                    
-                </div>
-
-                <div className='mb-6'>
-
-                    <label className='block text-gray-100 text-sm font-bold mb-2' htmlFor='email'>
-                        Correo Electrónico
-                    </label>
-                    <input value={formInput.email} onChange={(e) => setFormInput({...formInput, email: e.target.value})} className='bg-gray-300 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline' id='email' type='email' placeholder='correo@ejemplo.com' />
-                    <p className='text-red-500 text-xs italic'>{FormErrors.email}</p>
-
-                </div>
-
-                {successMSG && (
-                    <p className="text-green-600 text-sm font-semibold mb-2">{successMSG}</p>
-                )}
-                <div className='flex items-center justify-between'>
-                    
-                        <button onClick={handleRegisterClick} className='submit bg-yellow-400 w-[180px] h-[50px] rounded-[13px] text- hover:bg-yellow-600 hover:scale-95 font-bold py-2 px-4  focus:outline-none focus:shadow-outline' type='button'>
+                    <div className='flex gap-6'>
+                        <button onClick={handleRegister} className='submit bg-yellow-500 w-[120px] h-[30px] rounded-[8px] text-white hover:bg-yellow-600 font-bold focus:outline-none focus:shadow-outline' type='button'>
                             Register
                         </button>
-                        
-                    <button className='submit bg-gray-100 hover:bg-gray-500 text-gray-700  hover:text-gray-300 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'>
-                        Iniciar con Google 
-                    </button>
-                </div>
-                <p className="text-yellow-200 font-semibold">¿Ya tienes cuenta?</p> 
-                <NavLink to="/InicioSesion" className="font-bold text-yellow-200 no-underline hover:underline decoration-2">Inicia Sesion</NavLink>
-            </form>
+                        <button className='submit bg-gray-100 hover:bg-gray-500 text-gray-700  hover:text-gray-100 font-bold w-[170px] h-[30px] rounded-[8px] focus:outline-none focus:shadow-outline'>
+                            Iniciar con Google 
+                        </button>
+                    </div>
+
+                    <p className="text-yellow-200 font-semibold pt-5">¿Ya tienes cuenta?</p> 
+                    <NavLink to="/InicioSesion" className="font-bold text-yellow-200 no-underline hover:underline decoration-2">Inicia Sesion</NavLink>
+                </form>
+            </div>
+
         </div>
-    </div>
     </div>
   )
 }
