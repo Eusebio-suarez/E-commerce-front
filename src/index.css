@@ -2,12 +2,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Pattaya&display=swap');
 @import "tailwindcss";
 
+
 h1 {
     font-family: "Josefin", sans-serif;
     font-weight: 400;
 }
 
+
 h2{
     font-family: "Pattaya", sans-serif;
     font-weight: 400;
 }
+
+body{
+    background-color: #f4f5f7;
+}
+
+.scroll {
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ebebeb transparent;
+
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: thin; /* Firefox */
+}
+
