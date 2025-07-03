@@ -1,7 +1,7 @@
 
 export const HeaderAdmin = () => {
   return (
-    <header className="bg-[#fefefe] py-6 px-8 w-full shadow-md flex justify-between">
+    <header className="bg-[#fefefe] py-6 px-8 w-full  shadow-md flex justify-between">
       <div className="flex gap-1 items-center">
         <p className="text-xl font-medium text-neutral-900">Panel de Administración</p>
       </div>
