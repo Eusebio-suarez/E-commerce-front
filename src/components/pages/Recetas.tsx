@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import imgfondo from "../../assets/receta.jpg";
+import { Link } from "react-router-dom";
 
 export const Recetas: React.FC = () => {
   const [selectedRecipe, setSelectedRecipe] = useState({
@@ -26,6 +28,7 @@ export const Recetas: React.FC = () => {
     {
       category: "Panes",
       items: [
+        
         {
           name: "Pan de Plátano",
           image:
@@ -88,6 +91,60 @@ export const Recetas: React.FC = () => {
 5. Dejar reposar 1 hora o hasta duplicar tamaño
 6. Formar los panes y dejar reposar 30 minutos más
 7. Hornear a 180°C por 25-30 minutos`,
+        },
+        {
+          name: "Pan integral",
+          image:
+            "https://cdn.discordapp.com/attachments/1356402890515808426/1389583477942255776/PK77XOCX4ZAVFI5AUF3DZRBJNY.png?ex=6865ceb6&is=68647d36&hm=16bd79ae59b2b82e7ccf696c86bc5e44ed491b8396cd650ff4a92a0285861553&",
+          ingredients: [
+            "10 g de levadura seca",
+            "1 cucharada de azúcar",
+            "1 cucharadita de sal",
+            "2 cucharadas de aceite de oliva",
+            "300 ml de agua tibia",
+            "500 g de harina integral",
+            "1 cucharada de semillas de chía (opcional)",
+            "1 cucharada de avena (opcional)",
+          ],
+          instructions: `1. Mezclar la levadura, azúcar y agua tibia
+2. Dejar reposar 10 minutos hasta espumar
+3. Añadir harina integral y sal
+4. Amasar hasta obtener masa suave
+5. Dejar reposar en un lugar cálido por 1 hora
+6. Formar el pan y dejar reposar 30 minutos más
+7. Hornear a 200°C por 30-35 minutos
+8. Enfriar antes de cortar
+9. Disfrutar con mantequilla o mermelada`,
+        },
+                {
+          name: "Croissant casero",
+          image:
+            "https://www.infobae.com/resizer/v2/OJP7C7C7LZHOJIGQZLL3TKE42A.jpg?auth=c22db2295026025971f998b6d4a2be4acdd38f3ef4ac544ad780afc445a4eee3&smart=true&width=992&height=558&quality=85",
+          ingredients: [
+            "500 g de harina de trigo",
+            "10 g de sal",
+            "50 g de azúcar",
+            "10 g de levadura fresca",
+            "300 ml de agua tibia",
+            "250 g de mantequilla fría",
+            "1 huevo (para pincelar)",
+          ],
+          instructions: 
+            `1. Mezclar la harina, sal y azúcar en un bowl
+            2. Disolver la levadura en el agua tibia
+            3. Añadir la mezcla de levadura a la harina
+            4. Amasar hasta obtener una masa suave
+            5. Dejar reposar en un lugar cálido por 1 hora
+            6. Estirar la masa en forma de rectángulo
+            7. Colocar la mantequilla fría en el centro
+            8. Doble la masa sobre la mantequilla y estirar
+            9. Repetir el proceso de doblar y estirar 3 veces
+            10. Cortar la masa en triángulos y enrollar
+            11. Dejar reposar los croissants por 30 minutos
+            12. Precalentar el horno a 200°C
+            13. Pincelar con huevo batido
+            14. Hornear por 15-20 minutos hasta dorar
+            15. Enfriar antes de servir`,
         },
       ],
     },
@@ -158,15 +215,33 @@ export const Recetas: React.FC = () => {
 6. Añadir crema y especias
 7. Servir con semillas de calabaza`,
         },
+
       ],
     },
   ];
   return (
-    <div className="min-h-screen p-8">
-      <div className="max-w-7xl mx-auto rounded-lg shadow-xl overflow-hidden flex justify-between">
-        <div className="scroll flex flex-col md:flex-row w-full h-[650px] justify-between">
+    <div className="min-h-screen p-8 ">
+
+      <div
+        className="absolute inset-0 bg-cover bg-center z-0"
+        style={{
+          backgroundImage: `url(${imgfondo})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          zIndex: -1,
+          height: "1000px",
+        }} />
+
+      <div className="max-w-7xl mx-auto mt-30">
+        <h2 className="text-5xl text-center text-white mb-8">
+          Recetas
+        </h2>
+      </div>
+
+      <div className="w-full scroll flex flex-col md:flex-row h-[650px] justify-between">
           {/* Menú lateral */}
-          <div className="p-2 flex flex-col mr-[20px] w-full md:w-1/4 overflow-y-auto rounded-lg backdrop-blur-xl bg-[#f0cf2c] border-2 border-gray-400">
+          <div className="mb-20 p-2 flex flex-col ml-5 mr-[20px] w-full md:w-1/4 overflow-y-auto backdrop-blur-sm gap-4 rounded-2xl border-2 border-l-[5px] border-b-[5px] border-gray-[rgba(11,9,6,255)] shadow-[0_10px_20px_rgba(11,9,6,255)]">
             {recipes.map((category, index) => (
               <div key={index} className="p-4">
                 <h2 className="text-3xl font-bold text-white mb-4">
@@ -205,11 +280,11 @@ export const Recetas: React.FC = () => {
             ))}
           </div>
           {/* Área de detalle de receta */}
-          <div className="w-full md:w-3/4 p-8 overflow-y-auto ml-[20px] rounded-lg bg-white">
+          <div className="mb-20 mr-5 w-full md:w-3/4 p-8 overflow-y-auto ml-[20px] rounded-lg bg-white  border-2 border-r-[5px] border-b-[5px] border-gray-[rgba(11,9,6,255)] shadow-[0_10px_20px_rgba(11,9,6,255)]">
             <div className="max-w-3xl mx-auto">
-              <h1 className="text-4xl font-bold text-gray-800 mb-6">
+              <h2 className="text-4xl font-bold text-gray-800 mb-6">
                 {selectedRecipe.name}
-              </h1>
+              </h2>
               <div className="rounded-lg overflow-hidden mb-8 shadow-lg">
                 <img
                   src={selectedRecipe.image}
@@ -245,8 +320,16 @@ export const Recetas: React.FC = () => {
               </div>
             </div>
           </div>
+          <div className="flex flex-col items-center content-center justify-evenly font-bold text-gray-800 text-center w-[30%] p-5 h-[30%]  rounded-lg bg-white  border-2 border-r-[5px] border-b-[5px] border-gray-[rgba(11,9,6,255)] shadow-[0_10px_20px_rgba(11,9,6,255)]">
+            si deseas saber mas recetas puedes visitar la pagina de libros y comprar el libro de las recetas que deseas.
+            <Link to="/libros">
+              <button className="text-white bg-blue-500 hover:bg-blue-600 rounded-lg px-4 py-2">
+                Ir a la página de libros
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
+
   );
 };

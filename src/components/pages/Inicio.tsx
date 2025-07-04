@@ -20,10 +20,26 @@ export const Inicio = () => {
     slidesToShow: 4,
     slidesToScroll: 3,
     autoplay: true,
-    };
+    responsive: [
+        {
+            breakpoint: 700,
+            settings:{
+                slidesToShow: 1,
+                slidesToScroll: 1,
+            },
+        },
+        {
+            breakpoint: 1180,
+            settings:{
+                slidesToShow: 2,
+                slidesToScroll: 2,
+            }
+        }
+    ]
+    }
 
     return (
-        <div>
+        <div className="">
             <div className="pt-28 flex justify-items-start items-center">
                 <div className="relative">
                     <img src={fondo} alt="imagen de inicio" className="w-[100vw] h-[calc(100vh-134px)] object-cover"/>
@@ -37,8 +53,7 @@ export const Inicio = () => {
                 </div>
             </div>
 
-    
-            <div className="bg-[#ffe5d2] py-6">
+            <div className="bg-red-200 py-6">
                 <div className="flex justify-center">
                 <h3 className="text-2xl font-semibold">Libros Recomendados</h3>
                 </div>
@@ -79,7 +94,7 @@ export const Inicio = () => {
                     />
                     <Card
                         titulo="Bon Appetit Magazine August 2020 Simple Summer Recipes"
-                        pClass="pt-3 pb-4" 
+                        pClass="pt-3.5 pb-4" 
                         precio="$23.00.00"
                         img = {<img src={libro7} className="w-74 h-[290px] rounded-t-[10px] object-cover" alt="Libro1"/>}
                     />
@@ -88,7 +103,6 @@ export const Inicio = () => {
                         precio="$50.000.00"
                         img={<img src={libro8} className="w-74 h-[290px] rounded-t-[10px] object-cover" alt="Libro1"/>}
                     />
-                    
                 </Slider>
                 </div>
             </div>
