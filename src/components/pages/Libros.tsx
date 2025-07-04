@@ -1,3 +1,5 @@
+import fotoFondo from "../../assets/fondoLibros.jpg"
+
 //import { CardL } from "../ui/CardL"
 import { CardL } from "../ui/CardL"
 import { useEffect, useState } from "react" 
@@ -17,22 +19,30 @@ export const Libros = () => {
     },[])
 
     return (
-        <div className="bg-amber-100 w-full pt-40 py-9">
-        <div className="max-w-7xl mx-auto px-4 gap-7 grid grid-cols-4 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 relative">
-            {books.map((book:libro) => (
-                <>
-                <CardL
-                    key={book.id_libro}
-                    imagen = {book.foto}
-                    titulo = {book.nombre_libro}
-                    descripcion = {book.descripcion}
-                    precio =  {book.precio}
-                    boton = 'Añadir al carrito'
-                />
-                </>
-            ))
-            }
-        </div>
+        <div className="relative bg-amber-100 w-full pt-28 py-9">
+            <div className="absolute w-full h- object-cover">
+                <img 
+                src={fotoFondo} 
+                alt="fondo libros page" 
+                className="w-full h-full object-cover fixed"/>
+            </div>
+            <div className="pt-10 relative">
+                <div className="max-w-7xl mx-auto px-4 gap-7 grid grid-cols-4 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4">
+                {books.map((book:libro) => (
+                    <>
+                    <CardL
+                        key={book.id_libro}
+                        imagen = {book.foto}
+                        titulo = {book.nombre_libro}
+                        descripcion = {book.descripcion}
+                        precio =  {book.precio}
+                        idLibro = {book.id_libro}
+                    />
+                    </>
+                ))
+                }
+            </div>
+            </div>
         </div>
     )
 }
