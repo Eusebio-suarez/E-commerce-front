@@ -64,12 +64,12 @@ export const InicioSesion = () => {
 
             console.log(response)
 
-            if (response.status === 200){
-                Navigate("/")
-            }
-
             const data = await response.json()
-            console.log(data.mensaje)
+
+            if(response.status==200){
+                data.rol=="admin"? Navigate("/admin"): Navigate("/")
+            }
+            
             
             } else{
                 setSuccessMSG('');
