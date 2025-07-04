@@ -15,7 +15,12 @@ h2{
 }
 
 body{
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     background-color: #f4f5f7;
+
 }
 
 .scroll {
