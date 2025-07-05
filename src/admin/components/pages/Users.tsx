@@ -74,8 +74,8 @@ export const Users = () => {
           customStyles={{
             headCells:{
               style:{
-                fontFamily: 'sans-serif',
-                fontWeight: '600',
+                fontSize: '14px',
+                minHeight: '60px',
               }
             }
           }}
