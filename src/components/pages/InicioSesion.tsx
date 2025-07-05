@@ -65,7 +65,7 @@ export const InicioSesion = () => {
             console.log(response);
 
             if (response.status === 200) {
-                data.rol === "admin" ? Navigate("/admin") : Navigate("/");
+                data.rol === "admin" ? Navigate("/admin/orders") : Navigate("/");
             } else {
                 setSuccessMSG('Credenciales inválidas');
             }
