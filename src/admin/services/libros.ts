@@ -60,3 +60,29 @@ export const eliminateBook = async (id_libro: number) => {
   const data = await response.json();
   return data;
 };
+
+export const createBook = async (libro: {nombre_libro: string;precio: number;descripcion: string;stock: number,estado:number}) => {
+  try {
+    const response = await fetch("https://e-commerce-back-wtnc.onrender.com/api/nuevo_libro", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials:"include",
+      body: JSON.stringify(libro),
+    });
+
+    const data = await response.json();
+
+    console.log(data)
+    
+    if (!response.ok) {
+      throw new Error(data.mensaje || "Error al crear el libro");
+    }
+
+    alert("Libro creado correctamente");
+
+  } catch (error) {
+    alert("Error: " + error);
+  }
+};
