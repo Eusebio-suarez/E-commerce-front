@@ -41,7 +41,7 @@ export const Carrito = () => {
   };
 
   const totalPrecio = carritoProducts.reduce(
-    (acc, producto) => acc + Number(producto.precio_total) * (producto.cantidad as number),
+    (acc, producto) => acc + Number(producto.precio) * (producto.cantidad as number),
     0
   );
 
@@ -78,7 +78,7 @@ export const Carrito = () => {
                   id={(producto.id as number)}
                   img={producto.foto as string}
                   nombre={producto.nombre_libro as string}
-                  precio={producto.precio_total as number}
+                  precio={producto.precio as number}
                   cantidad={producto.cantidad as number}
                   onDelete={eliminarProducto}
                   onIncrement={incrementarCantidad}

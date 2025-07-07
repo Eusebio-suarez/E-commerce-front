@@ -44,3 +44,35 @@ export const deleteCart = async (id: number): Promise<void> => {
     console.error("Error al eliminar el carrito:", error);
   }
 }
+
+export const plus = async (idProducto: number|undefined) => {
+    const response = await fetch ("https://e-commerce-back-wtnc.onrender.com/api/carrito/agregar",{
+        method: "POST",
+        headers: {
+            "Content-type" : "application/json"
+        },
+        credentials: "include",
+        body:JSON.stringify ({
+            idProducto: idProducto,
+            cantidad: 1,
+        })
+    });;
+    
+    return response;
+}
+
+export const minus = async (idProducto: number|undefined) => {
+    const response = await fetch ("https://e-commerce-back-wtnc.onrender.com/api/carrito/eliminar",{
+        method: "POST",
+        headers: {
+            "Content-type" : "application/json"
+        },
+        credentials: "include",
+        body:JSON.stringify ({
+            idProducto: idProducto,
+            cantidad: 1,
+        })
+    });;
+    
+    return response;
+}
