@@ -27,7 +27,7 @@ export const Libros = () => {
                 className="w-full h-full object-cover fixed"/>
             </div>
             <div className="pt-10 relative">
-                <div className="max-w-7xl mx-auto px-4 gap-7 grid grid-cols-4 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4">
+                <div className="mx-auto grid sm:grid-cols sm:max-w-4xl sm:gap-10 md:grid-cols-2 lg:grid-cols-4 lg:max-w-7xl lg:gap-7">
                 {books.map((book:libro) => (
                     <>
                     <CardL

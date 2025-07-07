@@ -18,7 +18,7 @@ export const Card: React.FC<CardProps> = ({
 }) => {
     return (
         <div className="py-5 flex justify-center">
-            <div className="bg-white w-72 h-[460px] rounded-[10px] flex flex-col hover:scale-105">
+            <div className="bg-white w-72 h-[460px] rounded-[10px] flex flex-col">
                 {img}
                 <div className="px-3.5 py-5">
                     <h3 className={`font-semibold text-[19px] leading-5 ${h3Class}`}>{titulo}</h3>
