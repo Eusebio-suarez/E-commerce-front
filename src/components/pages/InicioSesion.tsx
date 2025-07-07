@@ -45,16 +45,15 @@ export const InicioSesion = () => {
     };
     const Navigate = useNavigate()
 
-
-
     //Validar Campos
-    const handlerLogin = async () => {
-        try{
+    const handlerLogin = async (e: React.FormEvent) => {
+    e.preventDefault(); // Evita recargar la página
 
-            if (validateForm()){
-            const response =  await fetch (`https://e-commerce-back-wtnc.onrender.com/api/iniciarSesion`, {
-                method: "POST", 
-                headers: {"Content-type": 'application/json'},
+    try {
+        if (validateForm()) {
+            const response = await fetch(`https://e-commerce-back-wtnc.onrender.com/api/iniciarSesion`, {
+                method: "POST",
+                headers: { "Content-type": 'application/json' },
                 credentials: "include",
                 body: JSON.stringify({
                     correo: FormInput.email,
@@ -62,23 +61,22 @@ export const InicioSesion = () => {
                 }),
             });
 
-            console.log(response)
+            const data = await response.json();
+            console.log(response);
 
-            if (response.status === 200){
-                Navigate("/")
+            if (response.status === 200) {
+                data.rol === "admin" ? Navigate("/admin/orders") : Navigate("/");
+            } else {
+                setSuccessMSG('Credenciales inválidas');
             }
-
-            const data = await response.json()
-            console.log(data.mensaje)
-            
-            } else{
-                setSuccessMSG('');
-            }
+        } else {
+            setSuccessMSG('');
         }
-        catch(e:any){
-            console.log("Error")
-        }
+    } catch (e) {
+        console.log("Error", e);
     }
+}
+
 
 
     return (
@@ -90,7 +88,7 @@ export const InicioSesion = () => {
 
             <div className= "absolute w-[390px] h-[430px] flex flex-col justify-center align-middle backdrop-blur-sm gap-4 rounded-2xl shadow-2xl shadow-black">
                 <h3 className="text-center text-[28px] font-bold text-white">Iniciar Sesión</h3>
-                <form onSubmit={validateForm} action="#" className="flex flex-col justify-center items-center gap-4 pt-4">
+                <form onSubmit={handlerLogin} className="flex flex-col justify-center items-center gap-4 pt-4">
                     
                     <input onChange={(e)=> setFormInput({...FormInput, email: e.target.value})} value={FormInput.email} type="email" className="bg-gray-300 w-[240px] h-[30px] pl-2 rounded-[5px] outline-none" placeholder="Email"/>
                     <p className='text-red-700 text-[12px] font-semibold italic'>{FormErrors.email}</p>
@@ -102,7 +100,7 @@ export const InicioSesion = () => {
                         <p className="text-green-600 text-sm font-semibold mb-2">{successMSG}</p>
                     )}
                     
-                    <button onClick={handlerLogin} className="bg-[#df5454] w-[240px] h-[30px] rounded-[8px] text-white hover:bg-[#c74b4b]">Iniciar Sesión</button>
+                    <button type="submit" className="bg-[#df5454] w-[240px] h-[30px] rounded-[8px] text-white hover:bg-[#c74b4b]">Iniciar Sesión</button>
 
                     <div className="flex justify-center gap-12 pt-12">
                         <p className="text-white">¿No tienes cuenta?</p> 
