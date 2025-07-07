@@ -28,9 +28,7 @@ export const updateBook = async (libro: Book) => {
     if (!response.ok) {
       throw new Error('Error al actualizar el libro');
     }
-
-    const data = await response.json();
-    return data;
+    return response;
   } catch (error) {
     console.error(error);
     throw error;
@@ -57,8 +55,7 @@ export const eliminateBook = async (id_libro: number) => {
     throw new Error(errorData.mensaje || 'Error al eliminar el libro');
   }
 
-  const data = await response.json();
-  return data;
+  return response;
 };
 
 export const createBook = async (libro: {nombre_libro: string;precio: number;descripcion: string;stock: number,estado:number}) => {
@@ -77,10 +74,12 @@ export const createBook = async (libro: {nombre_libro: string;precio: number;des
     console.log(data)
     
     if (!response.ok) {
+      swal("Error","Error al crear libro","error")
       throw new Error(data.mensaje || "Error al crear el libro");
     }
 
-    alert("Libro creado correctamente");
+    swal("Exito","Se creo correctamente el libro","success")
+    
 
   } catch (error) {
     alert("Error: " + error);
