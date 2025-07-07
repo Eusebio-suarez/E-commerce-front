@@ -19,11 +19,11 @@ const añadir = async (idLibro: number | undefined) => {
     console.log(data)
 
     if (data.ok){
-        alert("Producto añadido correctamente")
+        swal("Exito","Producto añadido correctamente","success")
     }
 
     if (!data.ok){
-        alert("No se pudo añadir el producto")
+        swal("Error","No se pudo añadir el producto","error")
     }
 }
 
