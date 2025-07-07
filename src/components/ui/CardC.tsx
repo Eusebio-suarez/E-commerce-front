@@ -1,3 +1,6 @@
+import { plus } from "../../services/carritoaccion";
+import { minus } from "../../services/carritoaccion";
+
 type CardCProps = {
   id: number;
   img?: string;
@@ -15,9 +18,7 @@ export const CardC: React.FC<CardCProps> = ({
   nombre,
   cantidad,
   precio,
-  onDelete,
-  onIncrement,
-  onDecrement,
+
 }) => {
   return (
     <div className="bg-white p-4 rounded-2xl shadow-md w-[500px] flex justify-between items-center gap-4 hover:scale-[1.02] transition-all duration-300">
@@ -32,29 +33,20 @@ export const CardC: React.FC<CardCProps> = ({
         <div className="flex items-center gap-2">
           <button
             className="bg-blue-500 text-white px-4 py-2 h-10 rounded-xl hover:bg-blue-700 transition"
-            onClick={() => onIncrement?.(id)}
+            onClick={() => plus(id)}
           >
             +
           </button>
           <button
             className="bg-blue-500 text-white px-4 py-2 h-10 rounded-xl hover:bg-blue-700 transition disabled:opacity-50"
-            onClick={() => onDecrement?.(id)}
             disabled={(cantidad as number) <= 1}
+            onClick={() => minus(id)}
           >
             -
           </button>
         </div>
         <p className="text-gray-600 mt-1">Cantidad: {cantidad}</p>
-        <button
-          className="mt-5 bg-red-500 text-white px-4 py-2 h-10 rounded-xl hover:bg-red-700 transition"
-          onClick={() => {
-            if (confirm("¿Seguro que deseas eliminar este producto del carrito?")) {
-              onDelete?.(id);
-            }
-          }}
-        >
-          Eliminar
-        </button>
+
       </div>
     </div>
   );
