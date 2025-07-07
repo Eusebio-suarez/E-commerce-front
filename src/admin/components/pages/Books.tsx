@@ -1,3 +1,4 @@
+import swal from "sweetalert";
 import { useState, useEffect } from "react";
 import type { Book } from "../../../types/books";
 import { createBook, eliminateBook, getBooks, updateBook } from "../../services/libros";
@@ -68,28 +69,49 @@ const handleSubmit = async (e: React.FormEvent) => {
   try {
     const data = await updateBook(selectedBook as Book); // casteamos para asegurarnos del tipo
     setModal(false); // cerramos 
-    alert(data.mensaje)
+    if(data.ok){
+      swal("Exito","libro actualizado correctamente","success")
+    }
+    if(!data.ok){
+      swal("Error","error al actualizar libro","error")
+    }
     fetchBooks()
   } catch (error) {
-    alert("Hubo un error al actualizar el libro.");
+   swal("Error","error al actualizar libros", "error")
   }
 };
 
 
 const handlerDelete = async (id_libro: number) => {
-  const confirmar = confirm("¿Estás seguro de que deseas eliminar este libro?");
-  if (!confirmar) return;
-
+  
+  swal({
+  title: "¿Estás seguro?",
+  text: "Esta acción no se puede deshacer",
+  icon: "warning",
+  buttons: ["Cancelar", "Confirmar"],
+  dangerMode: true,
+})
+.then(async(willProceed) => {
+  if (!willProceed) {
+    swal("Cancelado", "No se realizó ningún cambio", "info");
+    return
+  }
   try {
     const data = await eliminateBook(id_libro);
     console.log(data)
-    alert(data.mensaje);
+    if(data.ok){
+      swal("Exito","libro eliminado correctamente","success");
+    }
+    if(!data.ok){
+      swal("Error","error al eliminar libro","error")
+    }
 
     fetchBooks()
   } catch (error) {
-    alert("Hubo un error al eliminar el libro.");
+     swal("Error", "Error al eliminar", "error")
     console.error(error);
   }
+})
 };
 
 
