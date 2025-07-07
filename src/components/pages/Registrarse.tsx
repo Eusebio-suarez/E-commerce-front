@@ -89,11 +89,11 @@ const handleRegister = async (e: React.FormEvent) => {
             console.log(data);
 
             if (response.status === 201) {
-                alert("¡Registro exitoso! Ahora puedes iniciar sesión.");
+                swal("Exito","¡Registro exitoso! Ahora puedes iniciar sesión.","seccess");
                 navigate("/inicioSesion")
             }
             else {
-                alert('no se pudo registrar');
+                swal("Error",'no se pudo registrar',"Error");
             }
 
         } 
