@@ -25,7 +25,7 @@ export const Libros = () => {
                 alt="fondo libros page" 
                 className="w-full h-full object-cover fixed"/>
             </div>
-            
+
             <div className="pt-14 relative justify-items-center md:pt-20 lg:pt-32">
                 <div className="grid gap-5 sm:grid-cols md:gap-7 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
                     {books.map((book:libro) => (
