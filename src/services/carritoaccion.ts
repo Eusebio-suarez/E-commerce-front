@@ -1,4 +1,5 @@
 import type { carritoproducts } from "../types/carritoproducts";
+declare const swal: any; 
 
 export const getCart = async (): Promise<carritoproducts[]> => {
   try {
@@ -45,7 +46,7 @@ export const deleteCart = async (id: number): Promise<void> => {
   }
 }
 
-export const plus = async (idProducto: number|undefined) => {
+export const plus = async (idProducto: number) => {
     const response = await fetch ("https://e-commerce-back-wtnc.onrender.com/api/carrito/agregar",{
         method: "POST",
         headers: {
@@ -53,26 +54,57 @@ export const plus = async (idProducto: number|undefined) => {
         },
         credentials: "include",
         body:JSON.stringify ({
-            idProducto: idProducto,
+            id: idProducto,
             cantidad: 1,
         })
-    });;
-    
+    });
+
+    if (!response.ok) {
+        throw new Error("Error al agregar producto");
+    }
     return response;
 }
 
-export const minus = async (idProducto: number|undefined) => {
-    const response = await fetch ("https://e-commerce-back-wtnc.onrender.com/api/carrito/eliminar",{
-        method: "POST",
-        headers: {
-            "Content-type" : "application/json"
-        },
-        credentials: "include",
-        body:JSON.stringify ({
-            idProducto: idProducto,
-            cantidad: 1,
-        })
-    });;
-    
-    return response;
+export const minus = async (idProducto: number) => {
+  const response = await fetch("https://e-commerce-back-wtnc.onrender.com/api/carrito/eliminar", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json"
+    },
+    credentials: "include",
+    body: JSON.stringify({
+        id: idProducto,
+      cantidad: 1,
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error("Error al eliminar producto (decrement)");
+  }
+
+  return response;
+};
+
+export const realizarOrden = async () => {
+  try {
+    const response = await fetch("https://e-commerce-back-wtnc.onrender.com/api/ordenes/crear", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+    });
+
+    if (!response.ok) {
+      throw new Error("Error al realizar la orden");
+    }
+    const data = await response.json();
+    console.log("Orden realizada:", data);
+    swal("Éxito", "Orden realizada exitosamente.", "success");
+    return data; 
+  } catch (error) {
+    console.error("Error al realizar la orden:", error);
+    swal("Error", "Error al realizar la orden.", "error");
+    throw error; 
+  }
 }

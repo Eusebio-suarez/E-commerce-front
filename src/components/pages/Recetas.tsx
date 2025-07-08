@@ -239,15 +239,15 @@ export const Recetas: React.FC = () => {
         </h2>
       </div>
 
-      <div className="w-full scroll flex flex-col md:flex-row h-[650px] justify-between">
+      <div className="w-full flex max-[1024px]:flex-col h-[650px] justify-between">
           {/* Menú lateral */}
-          <div className="mb-20 p-2 flex flex-col ml-5 mr-[20px] w-full md:w-1/4 overflow-y-auto backdrop-blur-sm gap-4 rounded-2xl border-2 border-l-[5px] border-b-[5px] border-gray-[rgba(11,9,6,255)] shadow-[0_10px_20px_rgba(11,9,6,255)]">
+          <div className="mb-20 p-8 flex flex-col max-[1024px]:h-[6000px] max-[1024px]:flex-row max-[1024px]:overflow-x-scroll max-[1024px]:overflow-y-hidden ml-5 mr-[20px] max-[1024px]:w-[90]  overflow-y-auto backdrop-blur-sm gap-4 rounded-2xl border-2 border-l-[5px] border-b-[5px] border-gray-[rgba(11,9,6,255)] shadow-[0_10px_20px_rgba(11,9,6,255)]">
             {recipes.map((category, index) => (
-              <div key={index} className="p-4">
+              <div key={index} className="flex-col flex max-[1024px]:flex-row p-4">
                 <h2 className="text-3xl font-bold text-white mb-4">
                   {category.category}
                 </h2>
-                <div className="space-y-8">
+                <div className="space-y-8 flex-col flex max-[1024px]:flex-row">
                   {category.items.map((recipe, recipeIndex) => (
                     <div
                       key={recipeIndex}
@@ -261,7 +261,7 @@ export const Recetas: React.FC = () => {
                         })
                       }
                     >
-                      <div className="relative h-40 rounded-lg overflow-hidden">
+                      <div className="relative h-40 max-[1024px]:w-100 max-[1024px]:px-5 rounded-lg overflow-hidden">
                         <img
                           src={recipe.image}
                           alt={recipe.name}
@@ -280,8 +280,8 @@ export const Recetas: React.FC = () => {
             ))}
           </div>
           {/* Área de detalle de receta */}
-          <div className="mb-20 mr-5 w-full md:w-3/4 p-8 overflow-y-auto ml-[20px] rounded-lg bg-white  border-2 border-r-[5px] border-b-[5px] border-gray-[rgba(11,9,6,255)] shadow-[0_10px_20px_rgba(11,9,6,255)]">
-            <div className="max-w-3xl mx-auto">
+          <div className="mb-20 mr-[20px] w-full max-[1024px]:w-[90%] p-8 overflow-y-auto ml-[20px] rounded-lg bg-white  border-2 border-r-[5px] border-b-[5px] border-gray-[rgba(11,9,6,255)] shadow-[0_10px_20px_rgba(11,9,6,255)]">
+            <div className="max-w-3xl mx-auto ">
               <h2 className="text-4xl font-bold text-gray-800 mb-6">
                 {selectedRecipe.name}
               </h2>
@@ -320,7 +320,7 @@ export const Recetas: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col items-center content-center justify-evenly font-bold text-gray-800 text-center w-[30%] p-5 h-[30%]  rounded-lg bg-white  border-2 border-r-[5px] border-b-[5px] border-gray-[rgba(11,9,6,255)] shadow-[0_10px_20px_rgba(11,9,6,255)]">
+          <div className="max-[1024px]:w-[100%] flex flex-col items-center content-center justify-evenly font-bold text-gray-800 text-center w-[30%] p-5 h-[30%]  rounded-lg bg-white  border-2 border-r-[5px] border-b-[5px] border-gray-[rgba(11,9,6,255)] shadow-[0_10px_20px_rgba(11,9,6,255)]">
             si deseas saber mas recetas puedes visitar la pagina de libros y comprar el libro de las recetas que deseas.
             <Link to="/libros">
               <button className="text-white bg-blue-500 hover:bg-blue-600 rounded-lg px-4 py-2">
