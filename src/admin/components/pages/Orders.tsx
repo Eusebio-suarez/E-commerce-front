@@ -63,12 +63,12 @@ export const Orders = () => {
   }, []);
 
   return orders.length === 0 ? (
-    <div className="w-full flex justify-center items-center">
+   <div className="w-full flex justify-center items-center h-96">
       <div className="border-2 border-blue-500 border-l-transparent w-[25px] h-[25px] animate-spin rounded-full"></div>
     </div>
   ) : (
     <>
-    <div className="w-4/5 shadow-2xl mx-auto rounded-xl font-bold">
+    <div className="w-4/5 shadow-2xl mx-auto mt-10 rounded-xl font-bold">
      <OrdersChart  orders={orders}></OrdersChart>
       <DataTable
         columns={columns}
