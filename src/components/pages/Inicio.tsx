@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom"
+import { NavLink} from "react-router-dom"
 import fondo from "../../assets/rithwick-pr-SpXtY0d7VF0-unsplash.jpg"
 import { Card } from "../ui/Card"
 import libro2 from "../../assets/The Book of Pasta.jpg"
@@ -11,6 +11,7 @@ import libro8 from "../../assets/Paella_ The Original One-Pan Dish_ Over 50 Reci
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+
 
 export const Inicio = () => {
     var settings = {
@@ -26,7 +27,7 @@ export const Inicio = () => {
             settings:{
                 slidesToShow: 1,
                 slidesToScroll: 1,
-            },
+            }
         },
         {
             breakpoint: 1180,
@@ -39,23 +40,23 @@ export const Inicio = () => {
     }
 
     return (
-        <div className="">
-            <div className="pt-28 flex justify-items-start items-center">
+        <div>
+            <div className="pt-16 flex justify-items-start items-center md:pt-20">
                 <div className="relative">
-                    <img src={fondo} alt="imagen de inicio" className="w-[100vw] h-[calc(100vh-134px)] object-cover"/>
+                    <img src={fondo} alt="imagen de inicio" className="w-[100vw] h-[40vh] object-cover sm:h-[35px] md:h-[54vh] lg:h-[calc(100vh-134px)]"/>
                 </div>
-                <div className="absolute pl-14">
-                    <h2 className="text-8xl font-bold text-[#e4e4e4]">Bienvenido a Inesita</h2>
-                    <p className="text-[25px] text-[#e4e4e4]">Recetas fáciles para todos los días, <br/> llevamos los sabores del mundo a tu mesa</p>
+                <div className="absolute pl-4 sm:pl-14">
+                    <h2 className="text-[44px] font-bold leading-10 text-[#e4e4e4] sm:text-7xl md:text-7xl lg:text-8xl lg:leading-24">Bienvenido a Inesita</h2>
+                    <p className="text-[15px] mt-2.5 font-medium leading-4 text-[#e4e4e4] sm:text-2xl md:leading-6 lg:text-[25px] lg:leading-8">Recetas fáciles para todos los días, <br/> llevamos los sabores del mundo a tu mesa</p>
                     <NavLink to="/Recetas">
-                    <button className="mt-6 text-[21px] font-stretch-100% text-white bg-[#df5454] h-12 w-55 rounded-[10px] my-auto items-center">Explorar Recetas</button>
+                    <button className="mt-4 text-[15px] w-[130px] text-white bg-[#df5454] rounded-[10px] hover:scale-103 transition duration-300 hover:bg-red-500 my-auto items-center sm:text-[15px] sm:h-9 sm:w-40 md:text-[18px] lg:text-[21px] lg:h-12 lg:w-55">Explorar Recetas</button>
                     </NavLink>
                 </div>
             </div>
 
             <div className="bg-red-200 py-6">
                 <div className="flex justify-center">
-                <h3 className="text-2xl font-semibold">Libros Recomendados</h3>
+                <h3 className="text-[22px] font-semibold lg:text-[25px]">Libros Recomendados</h3>
                 </div>
 
                 <div className="flex flex-col px-14 py-[18px] overflow-hidden">

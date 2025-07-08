@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import imgRegistro from '../../assets/receta.jpg'
 
 export const Registrarse = () => {
@@ -19,8 +19,8 @@ const [formInput, setFormInput] = useState({
     email: ''
 });
 
-//navigate
-const navigate = useNavigate()
+
+const [successMSG, setSuccessMSG] = useState('');
 
 //"Metodo de validacion" y muestra de errores
 
@@ -67,9 +67,7 @@ const validateForm = () => {
 
 //Validar campos
 
-const handleRegister = async (e: React.FormEvent) => {
-    e.preventDefault(); // 🚫 Previene el envío tradicional del formulario
-
+const handleRegisterClick = async () => {
     try {
         if (validateForm()) {
             const response = await fetch("https://e-commerce-back-wtnc.onrender.com/api/registrar", {
@@ -86,35 +84,33 @@ const handleRegister = async (e: React.FormEvent) => {
             });
 
             const data = await response.json();
-            console.log(data);
-
-            if (response.status === 201) {
-                swal("Exito","¡Registro exitoso! Ahora puedes iniciar sesión.","seccess");
-                navigate("/inicioSesion")
+            if (response.ok) {
+                alert("Usuario registrado exitosamente.");
+                window.location.href = "/InicioSesion";
+            } else {
+                alert(data?.message || "Error al registrar usuario.");
+                setSuccessMSG('');
             }
-            else {
-                swal("Error",'no se pudo registrar',"Error");
-            }
-
-        } 
-    } catch (err) {
-        console.log("ERROR.", err);
+        } else {
+            setSuccessMSG('');
+        }
+    } catch {
+        alert("Ocurrió un error al registrar el usuario.");
+        setSuccessMSG('');
     }
 }
 
-
  return (
 
-    <div className='w-full flex content-center items-center justify-center pt-24'>
+    <div className='w-full flex content-center items-center justify-center pt-14 lg:pt-24'>
         <div className="relative">
             <img src={imgRegistro} alt="" className="w-[100vw] h-[100vh] object-cover"/>
-        </div>
-        <div className='absolute py-15 w-[390px] h-[80%] max-[750px]:flex-col backdrop-blur-xm backdrop-blur-sm gap-4 rounded-2xl shadow-2xl shadow-black flex flex-row items-center content-center justify-center p-4  mt-10'>
+        </div> 
+        <div className='absolute mb-5 mt-5 py-11 w-[280px] h-[90%] max-[750px]:flex-col backdrop-blur-xm backdrop-blur-sm gap-4 rounded-2xl shadow-2xl shadow-black flex flex-row items-center content-center justify-center p-4 md:w-[370px] md:h-[80%] lg:w-[390px] '>
             <div className='w-[100%] h-full flex items-center justify-center'>
-
-                <form onSubmit={handleRegister} className='w-full max-w-sm flex flex-col items-center'>
-                    <div className='mb-4'>
-                        <h3 className='text-center text-[28px] font-bold text-white'>Registrate</h3>
+                <form onSubmit={validateForm} className='w-full max-w-sm flex flex-col items-center'>
+                    <div className='lg:mb-4'>
+                        <h4 className='text-center text-[28px] font-bold text-white lg:text-[32px]'>Registrate</h4>
                         <label className='block text-gray-100 text-sm font-bold mb-2 pt-5' htmlFor='username'>
                             Nombre
                         </label>
@@ -147,13 +143,16 @@ const handleRegister = async (e: React.FormEvent) => {
                         <p className='text-red-500 text-xs italic'>{FormErrors.email}</p>
                     </div>
 
-                    <div className='flex gap-6'>
+                    {successMSG && (
+                        <p className="text-green-600 text-sm font-semibold mb-2">{successMSG}</p>
+                    )}
 
-                        <button className='submit bg-yellow-500 w-[120px] h-[30px] rounded-[8px] text-white hover:bg-yellow-600 font-bold focus:outline-none focus:shadow-outline' type='submit'>
+                    <div className='flex flex-col items-center gap-4 md:flex-row lg:gap-6'>
+                        <button onClick={handleRegisterClick} className='submit bg-yellow-500 w-[95px] h-7 lg:w-[120px] lg:h-[40px] rounded-[8px] text-white hover:bg-yellow-600 font-bold focus:outline-none focus:shadow-outline' type='button'>
                             Register
                         </button>
-                        <button className='submit bg-gray-100 hover:bg-gray-500 text-gray-700  hover:text-gray-100 font-bold w-[170px] h-[30px] rounded-[8px] focus:outline-none focus:shadow-outline'>
-                            Iniciar con Google
+                        <button className='submit bg-gray-100 hover:bg-gray-500 text-gray-700  hover:text-gray-100 font-bold w-[160px] h-7 lg:w-[170px] lg:h-[30px] rounded-[8px] focus:outline-none focus:shadow-outline'>
+                            Iniciar con Google 
                         </button>
                     </div>
 
@@ -166,3 +165,4 @@ const handleRegister = async (e: React.FormEvent) => {
     </div>
   )
 }
+
