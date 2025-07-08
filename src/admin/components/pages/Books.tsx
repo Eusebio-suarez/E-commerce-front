@@ -164,7 +164,7 @@ const handlerDelete = async (id_libro: number) => {
       </div>
       {
         modal && selectedBook &&
-        <form onSubmit={handleSubmit} className="fixed top-[20%] p-12 gap-5 rounded-2xl shadow-2xl bg-[#fefefe] flex">
+        <form onSubmit={handleSubmit} className="fixed top-[20%] p-12 gap-5 rounded-2xl shadow-2xl bg-[#fefefe] flex max-lg:flex-col">
           <div className="flex flex-col gap-3">
             <div className="flex flex-col gap-2 font-medium">
               <label> Nombre</label>
@@ -197,7 +197,7 @@ const handlerDelete = async (id_libro: number) => {
       }
       {
         modalCreate &&
-         <form onSubmit={handleSubmitCreate} className="fixed top-[20%] p-12 gap-5 rounded-2xl shadow-2xl bg-[#fefefe] flex">
+         <form onSubmit={handleSubmitCreate} className="fixed top-[20%] p-12 gap-5 rounded-2xl shadow-2xl bg-[#fefefe] flex max-lg:flex-col">
           <div className="flex flex-col gap-3">
             <div className="flex flex-col gap-2 font-medium">
               <label> Nombre</label>
