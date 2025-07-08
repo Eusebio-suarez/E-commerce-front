@@ -26,7 +26,15 @@ export const Libros = () => {
                 alt="fondo libros page" 
                 className="w-full h-full object-cover fixed"/>
             </div>
+
+        {books.length === 0 ? (
+        <div className="w-full flex justify-center items-center h-full">
+          <div className="border-2 mt-30 mb-30 border-blue-500 border-l-transparent w-20 h-20 animate-spin rounded-full"></div>
+        </div>
+      ) : (
             <div className="pt-10 relative">
+
+                
                 <div className="max-w-7xl mx-auto px-4 gap-7 grid grid-cols-4 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4">
                 {books.map((book:libro) => (
                     <>
@@ -43,6 +51,8 @@ export const Libros = () => {
                 }
             </div>
             </div>
+        )}
         </div>
+        
     )
 }
