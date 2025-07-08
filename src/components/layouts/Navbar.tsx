@@ -6,7 +6,6 @@ export const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     return (
-
         <div className="flex justify-end py-5 sm:pr-10 lg:pr-28 lg:py-9">
             <div className="font-[450] text-[18px]">
             <ul className="hidden md:flex  md:items-center sm:gap-6 lg:gap-9">
@@ -43,7 +42,7 @@ export const Navbar = () => {
             
             {isMenuOpen && (
                 <div className="absolute md:hidden lg:hidden top-[64px] py-4 w-[40%] bg-amber-100 flex flex-col items-center gap-6 transform transition-transform">      
-                    <NavLink to="/" onClick={() => setIsMenuOpen(false)} className="text-amber-600 ">Inicio</NavLink>
+                    <NavLink to="/" onClick={() => setIsMenuOpen(false)} className="text-amber-600"> Inicio</NavLink>
                     <NavLink to="/Libros" onClick={() => setIsMenuOpen(false)} className="text-amber-600">Libros</NavLink>
                     <NavLink to="/Recetas" onClick={() => setIsMenuOpen(false)} className="text-amber-600">Recetas</NavLink>
                     <NavLink to="/Carrito" onClick={() => setIsMenuOpen(false)} className="text-amber-600">Carrito</NavLink>

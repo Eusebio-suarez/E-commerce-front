@@ -49,14 +49,14 @@ export const Inicio = () => {
                     <h2 className="text-[44px] font-bold leading-10 text-[#e4e4e4] sm:text-7xl md:text-7xl lg:text-8xl lg:leading-24">Bienvenido a Inesita</h2>
                     <p className="text-[15px] mt-2.5 font-medium leading-4 text-[#e4e4e4] sm:text-2xl md:leading-6 lg:text-[25px] lg:leading-8">Recetas fáciles para todos los días, <br/> llevamos los sabores del mundo a tu mesa</p>
                     <NavLink to="/Recetas">
-                    <button className="mt-4 font-stretch-100% text-[15px] w-[130px] text-white bg-[#df5454] rounded-[10px] hover:bg-red-500 my-auto items-center sm:text-[15px] sm:h-9 sm:w-40 md:text-[18px] lg:text-[21px] lg:h-12 lg:w-55">Explorar Recetas</button>
+                    <button className="mt-4 text-[15px] w-[130px] text-white bg-[#df5454] rounded-[10px] hover:scale-103 transition duration-300 hover:bg-red-500 my-auto items-center sm:text-[15px] sm:h-9 sm:w-40 md:text-[18px] lg:text-[21px] lg:h-12 lg:w-55">Explorar Recetas</button>
                     </NavLink>
                 </div>
             </div>
 
             <div className="bg-red-200 py-6">
                 <div className="flex justify-center">
-                <h3 className="text-[22px] font-semibold">Libros Recomendados</h3>
+                <h3 className="text-[22px] font-semibold lg:text-[25px]">Libros Recomendados</h3>
                 </div>
 
                 <div className="flex flex-col px-14 py-[18px] overflow-hidden">
