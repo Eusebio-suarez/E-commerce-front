@@ -89,7 +89,7 @@ const handleRegister = async (e: React.FormEvent) => {
             console.log(data);
 
             if (response.status === 201) {
-                swal("Exito","¡Registro exitoso! Ahora puedes iniciar sesión.","success");
+                swal("Exito","¡Registro exitoso! Ahora puedes iniciar sesión.","seccess");
                 navigate("/inicioSesion")
             }
             else {
@@ -105,11 +105,11 @@ const handleRegister = async (e: React.FormEvent) => {
 
  return (
 
-    <div className='w-full flex content-center items-center justify-center pt-14 lg:pt-24'>
+    <div className='w-full flex content-center items-center justify-center pt-24'>
         <div className="relative">
             <img src={imgRegistro} alt="" className="w-[100vw] h-[100vh] object-cover"/>
         </div>
-        <div className='absolute mb-5 mt-5 py-11 w-[280px] h-[90%] max-[750px]:flex-col backdrop-blur-xm backdrop-blur-sm gap-4 rounded-2xl shadow-2xl shadow-black flex flex-row items-center content-center justify-center p-4 md:w-[370px] md:h-[85%] lg:w-[390px]'>
+        <div className='absolute py-15 w-[390px] h-[80%] max-[750px]:flex-col backdrop-blur-xm backdrop-blur-sm gap-4 rounded-2xl shadow-2xl shadow-black flex flex-row items-center content-center justify-center p-4  mt-10'>
             <div className='w-[100%] h-full flex items-center justify-center'>
 
                 <form onSubmit={handleRegister} className='w-full max-w-sm flex flex-col items-center'>
@@ -149,10 +149,10 @@ const handleRegister = async (e: React.FormEvent) => {
 
                     <div className='flex gap-6'>
 
-                        <button className='submit bg-yellow-500 w-[85px] h-[30px] rounded-[8px] text-white hover:bg-yellow-600 font-bold focus:outline-none focus:shadow-outline md:w-[125px] md:h-[30px]' type='submit'>
+                        <button className='submit bg-yellow-500 w-[120px] h-[30px] rounded-[8px] text-white hover:bg-yellow-600 font-bold focus:outline-none focus:shadow-outline' type='submit'>
                             Register
                         </button>
-                        <button className='submit bg-gray-100 hover:bg-gray-500 text-gray-700 w-[140px] h-[30px] hover:text-gray-100 font-bold md:w-[170px] md:h-[30px] rounded-[8px] focus:outline-none focus:shadow-outline'>
+                        <button className='submit bg-gray-100 hover:bg-gray-500 text-gray-700  hover:text-gray-100 font-bold w-[170px] h-[30px] rounded-[8px] focus:outline-none focus:shadow-outline'>
                             Iniciar con Google
                         </button>
                     </div>
@@ -166,4 +166,3 @@ const handleRegister = async (e: React.FormEvent) => {
     </div>
   )
 }
-
