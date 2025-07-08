@@ -8,7 +8,7 @@ export const AdminLayout = () => {
     <>
       <div className="w-full h-screen bg-[#f4f5f7] relative">
         <HeaderAdmin />
-        <main className="px-6 py-8 flex justify-between">
+        <main className="px-6 py-8 flex justify-between max-lg:flex-col max-lg:items-center">
           <NavbarAdmin></NavbarAdmin> 
           <Outlet /> 
         </main>
